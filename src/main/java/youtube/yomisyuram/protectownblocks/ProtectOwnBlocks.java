@@ -57,7 +57,7 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(protectExploit, this);
 
         getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("ProtectOwnBlocks 플러그인이 활성화되었습니다.");
+        getLogger().info("'ProtectOwnBlocks' Plugin enabled.");
     }
 
     private void loadConfig() {
@@ -78,7 +78,7 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
                 disabledPlayerList.set("disabled_players", new ArrayList<String>());
                 disabledPlayerList.save(disabledPlayerListFile);
             } catch (IOException e) {
-                getLogger().severe("Protect_mode_disabled_player_list.yml 파일을 생성하는 중에 오류가 발생했습니다.");
+                getLogger().severe("Error occurred while creating 'Protect_mode_disabled_player_list.yml' File.");
                 e.printStackTrace();
             }
         }
@@ -86,7 +86,7 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
         try {
             disabledPlayerList.load(disabledPlayerListFile);
         } catch (IOException | InvalidConfigurationException e) {
-            getLogger().severe("Protect_mode_disabled_player_list.yml 파일을 로드하는 중에 오류가 발생했습니다.");
+            getLogger().severe("Error occurred while loading 'Protect_mode_disabled_player_list.yml' File.");
             e.printStackTrace();
         }
     }
@@ -95,7 +95,7 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        getLogger().info("ProtectOwnBlocks 플러그인이 비활성화되었습니다.");
+        getLogger().info("'ProtectOwnBlocks' Plugin disabled.");
     }
 
     @EventHandler
@@ -144,7 +144,7 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
                 for (UUID owner : owners) {
                     blockDataStorage.removeRestrictedBlock(blockLocation, owner);
                 }
-                player.sendMessage("이미 해당 좌표를 보호하고 있는 플레이어의 데이터를 삭제하였습니다.");
+                player.sendMessage("The data previously protecting these coordinates has been deleted.");
             }
         }
     }
@@ -154,7 +154,7 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
     private void disableBlockProtection(Player player) {
         UUID playerUUID = player.getUniqueId();
         protectedPlayers.add(playerUUID);
-        player.sendMessage("The block that you place from now on will §4§lNOT §rbe protected.\n(If you want to enable again, type : '/pob on'");
+        player.sendMessage("The block that you place from now on will §4§lNOT §rbe protected.\n(If you want to enable again, type : '§a/pob on§r')");
 
         // 플레이어 기록 추가
         List<String> disabledPlayers = disabledPlayerList.getStringList("disabled_players");
@@ -209,7 +209,7 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
             for (UUID owner : owners) {
                 blockDataStorage.removeRestrictedBlock(location, owner);
             }
-            player.sendMessage("이미 해당 좌표를 보호하고 있는 플레이어의 데이터를 삭제하였습니다.");
+            player.sendMessage("The data previously protecting these coordinates has been deleted and updated with your data.");
         }
 
         // 블록 설치 시 새로운 데이터 저장
@@ -357,10 +357,10 @@ public class ProtectOwnBlocks extends JavaPlugin implements Listener {
                 } else if (args[1].equalsIgnoreCase("on")) {
                     enableBlockProtection(player);
                 } else {
-                    player.sendMessage(ChatColor.RED + "잘못된 명령어입니다. 사용법: /pob [on|off]");
+                    player.sendMessage("§b[ProtectOwnBlocks]§r // HELP //\n§a/pob on§r : After you type this command and then place blocks, those blocks will protected and will not breaked from other player.(This is enabled by default)\n§c/pob off§r : After you type this command and then place blocks, those blocks will not be protected.(Blocks that placed before typed this command will still be protected.)");
                 }
             } else {
-                player.sendMessage(ChatColor.RED + "잘못된 명령어입니다. 사용법: /pob [on|off]");
+                player.sendMessage("§b[ProtectOwnBlocks]§r // HELP //\n§a/pob on§r : After you type this command and then place blocks, those blocks will protected and will not breaked from other player.(This is enabled by default)\n§c/pob off§r : After you type this command and then place blocks, those blocks will not be protected.(Blocks that placed before typed this command will still be protected.)");
             }
         }
     }

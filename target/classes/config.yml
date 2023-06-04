@@ -5,7 +5,7 @@ restrict_interactions: true
 
 # If other player tires to break protected blocks, what message you want to print?
 # You can use "[blockOwnerName]" or "[blockOwnerUUID]".
-no_access_message: "Protected by : [blockOwnerName] (UUID: [blockOwnerUUID])"
+no_access_message: "Protected by : §b[blockOwnerName]§r §7(UUID: [blockOwnerUUID])§r"
 
 # Should we prevent from liquid(lava, water) break protected blocks(Like torch, redstone etc.)? (Default : true)
 prevent-liquid-break-protected-block: true

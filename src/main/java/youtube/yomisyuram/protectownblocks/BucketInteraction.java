@@ -52,7 +52,7 @@ public class BucketInteraction implements Listener {
         }
 
         event.setCancelled(true);
-        player.sendMessage("해당 위치에는 보호된 블록이 있어 물이나 용암을 설치할 수 없습니다.");
+        player.sendMessage("This location has a protected block so you cannot place water or lava on it.");
     }
 
     @EventHandler
