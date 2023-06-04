@@ -1,0 +1,6 @@
+1.0 stable 1 : Placed block are protected
+1.0 stable 2 : Placed block cordness is saved with separate world files.
+1.0 stable 3 ~ 6 : (forgot lol), but implemented explosion protect, piston protect for protected block
+1.0 stable 7 : Now most of the feature implemented, /pob <on/off> command now works
+1.0 stable 8 : Add Support 1.19.3 ~ 1.13. 1.12.2 ~ 1.8.8 servers are also supported but have problem with "onblockbreak" event.
+1.0 stable 9 : Now you can disable protection by world that you don't want to protect, prevented water/lava break protected blocks(like torch, redstone etc.)
